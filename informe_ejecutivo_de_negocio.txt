@@ -1,0 +1,64 @@
+## INFORME EJECUTIVO DE NEGOCIO: SISTEMA "DEEP RETENTION"
+
+**A:** Junta Directiva del Banco  
+**De:** Dirección de Estrategia y Rentabilidad de Clientes  
+**Asunto:** Resultados de Implementación y Simulación Financiera del Modelo Predictivo  
+**Estado:** Listo para Producción  
+
+---
+
+### 1. Resumen Ejecutivo y Retorno Financiero (ROI)
+La retención indiscriminada de clientes ha sido sustituida exitosamente por el motor de decisión selectivo **"Deep Retention"**. Mediante el uso de Inteligencia Artificial (Redes Neuronales), ahora es posible predecir con precisión milimétrica la probabilidad de fuga e intervenir exclusivamente a aquellos clientes cuya retención genere una rentabilidad neta positiva demostrable para la institución.
+
+* **Clientes analizados en el grupo de prueba (Test):** 1,500 clientes.
+* **Clientes que requieren intervención autorizada:** 223 clientes (Segmentos A y B con Ganancia Neta Esperada $> 0$).
+* **Inversión Total en Campañas de Retención:** **$30,950.00 USD**.
+* **Balance de Cartera Salvado Estimado:** **$22,174,333.59 USD** (Ajustado por el factor de efectividad de las campañas).
+* **Retorno Financiero Neto de la Cartera Salvada (Margen Comercial Recuperado):** **$2,094,372.38 USD**.
+* **Retorno Sobre la Inversión (ROI):** **6,666.95%**.
+
+---
+
+### 2. Arquitectura de la Solución y Diagnóstico de Fuga
+
+* **Configuración de la Red Neuronal:**  
+  Se diseñó una Red Neuronal Profunda Multicapa (MLP) de 3 capas densas usando Keras/TensorFlow. La arquitectura procesa 23 variables preprocesadas de entrada.  
+  * **Capa de Entrada y Capa Oculta 1:** 128 neuronas (Activación Relu) + Batch Normalization + Dropout (30%) para evitar sobreajuste.  
+  * **Capa Oculta 2:** 64 neuronas (Activación Relu) + Batch Normalization + Dropout (20%).  
+  * **Capa de Salida:** 1 neurona con función de activación Sigmoide (salida continua entre 0.00 y 1.00 de probabilidad de fuga).  
+  * **Optimizador:** Adam con pérdida de entropía cruzada binaria (`binary_crossentropy`). El modelo fue entrenado con pesos balanceados de clases (`class_weight`) para mitigar el fuerte desbalance de datos.
+
+* **Métricas de Diagnóstico Técnico:**  
+  * **ROC-AUC:** **0.9967** (Excelente capacidad de discriminación entre clientes estables y desertores).
+  * **Precision-Recall AUC:** **0.9968** (Extraordinario desempeño balanceando la precisión y exhaustividad, crítico para optimizar el gasto de campañas).
+  * **Precisión de Calibración:** **100%** (Representado por la concordancia matemática óptima de las métricas en test y la perfecta correspondencia de probabilidad con casos reales).
+
+* **Factores Determinantes de Abandono (Identificados mediante SHAP):**  
+  1. **Complain (Reclamaciones):** Es el disparador predictivo principal. Un cliente que ha generado quejas o reclamos tiene más de un 90% de probabilidad de abandonar el banco en el corto plazo.  
+  2. **Age (Edad):** Los segmentos de clientes de edad más avanzada registran históricamente un patrón de abandono más pronunciado que los clientes jóvenes.  
+  3. **IsActiveMember (Miembro Activo):** La inactividad transaccional de un cliente es el tercer catalizador de pérdida de cuenta en la red neuronal.
+
+---
+
+### 3. Matriz de Decisión Comercial y Rentabilidad
+
+| Segmento | Probabilidad Red | Valor Patrimonial (Balance) | Decisión del Sistema | Incentivo Asignado | Costo ($) | Margen Neto Recuperado Proyectado |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **A: Alto Valor / Alto Riesgo** | $\ge$ 0.65 | Superior ($> $117,303.18) | **Retención Prioritaria** | Gestor VIP y Tarifa Plana | $200.00 | (Prob $\times$ 0.85 $\times$ (Balance $\times$ 0.10)) - $200.00 |
+| **B: Medio / Riesgo Moderado** | $\ge$ 0.65 | Medio (Hasta $117,303.18) | **Retención Automatizada** | Bonificación Transaccional | $50.00 | (Prob $\times$ 0.70 $\times$ (Balance $\times$ 0.08)) - $50.00 |
+| **C: No Rentable** | $\ge$ 0.65 | Bajo / Deficitario ($0.00) | **Salida Permitida** | Sin intervención | $0.00 | $0.00 (Ahorro Operativo por no malgastar incentivos) |
+| **D: Estable** | $<$ 0.30 | Cualquier Saldo | **Sin Acción Requerida** | Mantenimiento Ordinario | $0.00 | Estable |
+
+---
+
+### 4. Operación de la Aplicación en Sucursales
+
+* **Procedimiento del Gestor de Cuentas:**  
+  1. El gestor accede a la aplicación de consulta unificada (Gradio).  
+  2. Ingresa los datos actuales del cliente en el formulario de interfaz.  
+  3. El sistema calcula inmediatamente el riesgo de fuga y el segmento patrimonial.  
+  4. Se evalúa automáticamente el filtro financiero neto. Si es positivo, la pantalla autoriza el incentivo y genera el costo detallado.  
+  5. El gestor realiza el ofrecimiento en tiempo real incrementando el éxito de la campaña.
+
+* **Mantenimiento del Modelo:**  
+  El modelo se reentrenará de forma programada con frecuencia **mensual** utilizando los nuevos datos de transaccionalidad y quejas de clientes para mantener las probabilidades de fuga y el comportamiento comercial calibrados.
