@@ -45,7 +45,11 @@ cd Brandon-primer-proyecto-IA
 pip install -r requirements.txt
 ```
 
-### 3. Lanzar la Aplicación Interactiva (Gradio)
+### 3. instalar la version correcta de scikit-learn
+```bash
+pip install scikit-learn==1.6.1
+```
+### 4 Lanzar la Aplicación Interactiva (Gradio)
 ```bash
 python app.py
 ```
