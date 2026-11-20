@@ -24,22 +24,20 @@ Este repositorio contiene la solución lista para producción de **"Deep Retenti
 ```text
 ├── modelo_assets/
 │   ├── deep_retention_model.keras       # Pesos guardados del modelo neural
-│   └── preprocesador_assets.pkl        # Pipeline del preprocesador serializado
-├── requirements.txt                    # Dependencias del entorno
-├── model_utils.py                      # Clase de inferencia autónoma de producción
-├── app.py                              # Aplicación interactiva (Gradio)
-├── train.py                            # Código de entrenamiento para reproducibilidad
-└── README.md                           # Documentación principal del sistema
-```
-
----
+│   └── preprocesador_assets.pkl         # Pipeline del preprocesador serializado
+├── app.py                               # Aplicación interactiva (Gradio)
+├── informe_ejecutivo_de_negocio.txt     # Resumen de métricas y resultados
+├── model_utils.py                       # Clase de inferencia autónoma de producción
+├── requirements.txt                     # Dependencias del entorno
+├── train.py                             # Código de entrenamiento para reproducibilidad
+└── README.md                            # Documentación principal del sistema
 
 ## 🔧 Instrucciones de Instalación y Uso
 
 ### 1. Clonar el Repositorio
 ```bash
-git clone https://github.com/TU-USUARIO/deep-retention.git
-cd deep-retention
+git clone [https://github.com/morochobrandon/Brandon-primer-proyecto-IA.git](https://github.com/morochobrandon/Brandon-primer-proyecto-IA.git)
+cd Brandon-primer-proyecto-IA
 ```
 
 ### 2. Instalar Dependencias
